@@ -14,42 +14,35 @@ public class User implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private long userId;
+    private long user_ID;
     private String username;
     private String password;
     private String email;
     @OneToOne(cascade = {CascadeType.ALL})
-    private Persona persona;
-    @OneToOne(cascade = {CascadeType.ALL})
-    private Cuenta cuenta;
+    private Customer customer;
 
-    // Spring security
+    // Spring security: ROLES
     @Enumerated(EnumType.STRING)
     private User_Role role;
 
-    
     public User() {
     }
 
-    public User(long userId, String username, String password, String email, Persona persona, Cuenta cuenta, User_Role role) {
-        this.userId = userId;
+    public User(String username, String password, String email, Customer customer, User_Role role) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.persona = persona;
-        this.cuenta = cuenta;
+        this.customer = customer;
         this.role = role;
     }
 
-
-
-    public long getUserId() {
-        return userId;
+    public long getUser_ID() {
+        return user_ID;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
+//    public void setUser_ID(long user_ID) {
+//        this.user_ID = user_ID;
+//    }
 
     public String getUsername() {
         return username;
@@ -75,20 +68,12 @@ public class User implements java.io.Serializable {
         this.email = email;
     }
 
-    public Persona getPersona() {
-        return persona;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
-    public Cuenta getCuenta() {
-        return cuenta;
-    }
-
-    public void setCuenta(Cuenta cuenta) {
-        this.cuenta = cuenta;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public User_Role getRole() {
@@ -98,5 +83,8 @@ public class User implements java.io.Serializable {
     public void setRole(User_Role role) {
         this.role = role;
     }
+    
 
+    
+    
 }

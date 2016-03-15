@@ -5,13 +5,13 @@
  */
 package com.banco.service;
 
-import com.banco.model.Cuenta;
+import com.banco.model.Account;
 
 /**
  *
  * @author fedec
  */
 public interface BankService {
-    public boolean transferencia(Cuenta nroCuentaOrigen, Cuenta nroCuentaDestino, float dinero);
-    public Cuenta getCuentaById(long nroCuenta);
+    public boolean transferencia(Account nroCuentaOrigen, Account nroCuentaDestino, float dinero);
+    public Account getCuentaById(long nroCuenta);
 }

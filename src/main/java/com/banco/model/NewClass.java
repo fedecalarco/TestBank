@@ -3,18 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.banco.daos;
-
-import com.banco.model.Account;
+package com.banco.model;
 
 /**
  *
  * @author fedec
  */
-public interface BankDAO {
+public class NewClass {
+    
+public static void main (String [] args){
+    User user = new User();
+    user.getCustomer().getAccounts().get(0).getAccount_ID();
+    
+}}
 
-    Account getAccountById(long account_ID);
-
-    void update(Account account);
-
-}

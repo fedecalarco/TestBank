@@ -5,7 +5,7 @@
  */
 package com.banco.controller;
 
-import com.banco.model.Cuenta;
+import com.banco.model.Account;
 import com.banco.model.User;
 import com.banco.service.BankService;
 import com.banco.service.UserService;
@@ -56,8 +56,8 @@ public class BankController {
             @RequestParam("dinero") float dinero,
             Model m
     ) {
-        Cuenta cuentaOrigen = bankService.getCuentaById(nroCuentaOrigen);
-        Cuenta cuentaDestino = bankService.getCuentaById(nroCuentaDestino);
+        Account cuentaOrigen = bankService.getCuentaById(nroCuentaOrigen);
+        Account cuentaDestino = bankService.getCuentaById(nroCuentaDestino);
         if (bankService.transferencia(cuentaOrigen, cuentaDestino, dinero)) {
             m.addAttribute("ok", "Exito");
         } else {

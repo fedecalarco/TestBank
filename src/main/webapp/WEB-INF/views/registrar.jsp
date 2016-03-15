@@ -55,16 +55,16 @@
                             <input type="email" name="email" id="emailid" value="" class="input"  required/><br/><br/>
 
                             <label for="nombreid">Nombre: </label><br/>
-                            <input type="text" name="Persona.nombre" id="nombreid" value="" class="input"  required/><br/><br/>
+                            <input type="text" name="Customer.fistname" id="nombreid" value="" class="input"  required/><br/><br/>
 
                             <label for="apellidoid">Apellido: </label><br/>
-                            <input type="text" name="Persona.apellido" id="apellidoid" value="" class="input"  required/><br/><br/>
+                            <input type="text" name="Customer.lastname" id="apellidoid" value="" class="input"  required/><br/><br/>
 
                             <label for="dniid">DNI:  </label><br/>
-                            <input type="text" name="Persona.dni" id="diniid" value="" class="input"  required/><br/><br/>
+                            <input type="text" name="Customer.dni" id="diniid" value="" class="input"  required/><br/><br/>
 
                             <label for="telefonoid">Telefono: </label><br/>
-                            <input type="text" name="Persona.telefono" id="telefonoid" value="" class="input"  required/><br/><br/>
+                            <input type="text" name="Customer.phone" id="telefonoid" value="" class="input"  required/><br/><br/>
 
                             <br/>
                             <a href="${pageContext.request.contextPath}/" class="btn btn-warning btn-lg" role="button">Cancelar</a> 

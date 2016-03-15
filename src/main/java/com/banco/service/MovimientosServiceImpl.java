@@ -5,37 +5,36 @@
  */
 package com.banco.service;
 
-import com.banco.model.Movimientos;
+import com.banco.model.Movements;
 import java.util.Date;
 
 /**
  *
  * @author fedec
  */
-public class MovimientosServiceImpl implements MovimientosService {
+public class MovimientosServiceImpl{
 
     
     
 
-    @Override
-    public Movimientos setMovimiento(String operacion, long id, double dinero) {
+   public static Movements setMovimiento(String operacion, long id, double dinero) {
         
-        Movimientos movs = new Movimientos();
+        Movements movs = new Movements();
         Date dia = new Date();
-        movs.setFecha(dia.toString());
+        movs.setDate(dia.toString());
         
         switch (operacion) {
             case "Registro":
-                movs.setAccion("Creacion de cuenta");
+                movs.setAction("Creacion de cuenta");
                 break;
             case "Envio_Transferencia":
-                movs.setAccion("Trasferencia: Envio $" + dinero + " a cuenta Nº " + id);
+                movs.setAction("Trasferencia: Envio $" + dinero + " a cuenta Nº " + id);
                 break;
             case "Recibio_Transferencia":
-                movs.setAccion("Trasferencia: Recibio $" + dinero + " "+"de cuenta Nº " + id);
+                movs.setAction("Trasferencia: Recibio $" + dinero + " "+"de cuenta Nº " + id);
                 break;
             default: 
-                movs.setAccion("OP desconocida");
+                movs.setAction("OP desconocida");
                 break;
         }
 

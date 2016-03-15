@@ -36,7 +36,7 @@ public class UserController {
     @RequestMapping(value = "/registrar", method = RequestMethod.POST)
     public String registrar(@ModelAttribute(value = "Usuario") User user) {
         // Verificar si username ^ email no existan
-        
+       
         userService.create(user);
         return "redirect:/HB/index";
     }

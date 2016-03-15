@@ -6,7 +6,7 @@
 package com.banco.service;
 
 import com.banco.daos.BankDAO;
-import com.banco.model.Cuenta;
+import com.banco.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,12 +22,11 @@ public class BankServiceImpl implements BankService {
     @Autowired
     private BankDAO bankDao;
     
-    private MovimientosService movimientosService = new MovimientosServiceImpl();
     
 
-    private boolean quitarSaldo(Cuenta cuenta, float saldo) {
-        if (cuenta.getSaldo() >= saldo) {
-            cuenta.setSaldo(cuenta.getSaldo() - saldo);
+    private boolean quitarSaldo(Account cuenta, float saldo) {
+        if (cuenta.getBalance()>= saldo) {
+            cuenta.setBalance(cuenta.getBalance()- saldo);
             return true;
         } else {
             // Saldo insuficiente
@@ -35,19 +34,19 @@ public class BankServiceImpl implements BankService {
         }
     }
 
-    private void depositarSaldo(Cuenta cuenta, float saldo) {
-        cuenta.setSaldo(cuenta.getSaldo() + saldo);
+    private void depositarSaldo(Account cuenta, float saldo) {
+        cuenta.setBalance(cuenta.getBalance()+ saldo);
     }
 
     @Override
-    public boolean transferencia(Cuenta cuentaOrigen, Cuenta cuentaDestino, float dinero) {
+    public boolean transferencia(Account cuentaOrigen, Account cuentaDestino, float dinero) {
         // Descuento a saldo a cuenta origen 
         if (quitarSaldo(cuentaOrigen, dinero)) {
             
             depositarSaldo(cuentaDestino, dinero);
             // Agrego los movimientos realizados a la la lista 
-            cuentaOrigen.agregarMovimiento(movimientosService.setMovimiento("Envio_Transferencia", cuentaDestino.getId(), dinero));
-            cuentaDestino.agregarMovimiento(movimientosService.setMovimiento("Recibio_Transferencia", cuentaOrigen.getId(),dinero));  
+            cuentaOrigen.addMovements(MovimientosServiceImpl.setMovimiento("Envio_Transferencia", cuentaDestino.getAccount_ID(), dinero));
+            cuentaDestino.addMovements(MovimientosServiceImpl.setMovimiento("Recibio_Transferencia", cuentaOrigen.getAccount_ID(),dinero));  
             // Update cuentas 
             bankDao.update(cuentaOrigen);
             bankDao.update(cuentaDestino);
@@ -58,8 +57,8 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public Cuenta getCuentaById(long nroCuenta) {
-        return bankDao.getCuentaById(nroCuenta);
+    public Account getCuentaById(long nroCuenta) {
+        return bankDao.getAccountById(nroCuenta);
     }
 
 }

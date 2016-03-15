@@ -52,12 +52,12 @@ public class AdminController {
     // *** MOVER A UN CONTROLLER DE ADMIN *** 
     @RequestMapping(value = "update", method = RequestMethod.POST)
     public String update(@ModelAttribute(value = "Usuario") User user, HttpSession session) {
-        User aux = userService.getUserById(user.getUserId());
+        User aux = userService.getUserById(user.getUser_ID());
 
         aux.setUsername(user.getUsername());
         aux.setPassword(user.getPassword());
         aux.setEmail(user.getEmail());
-        aux.getCuenta().setSaldo(user.getCuenta().getSaldo());
+  //      aux.getCuenta().setSaldo(user.getCuenta().getSaldo());
 
         userService.update(aux);
         return "redirect:/HB/Admin/Usuarios";

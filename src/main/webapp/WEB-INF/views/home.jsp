@@ -23,21 +23,21 @@
                     </div>
                     <div class="col-md-8" id="tabla">
                         <h1>Resumen de cuenta</h1>
-                        <h4>Titular: ${session_user.getPersona().getNombre()} ${session_user.getPersona().getApellido()}</h4>
-                        <h4>Nº de cuenta: 648418/${session_user.getUserId()}</h4>
-                        <h4>DNI: ${session_user.getPersona().getDni()}</h4>
+                        <h4>Titular: ${session_user.getCustomer().getFistname()} </h4>
+                        <h4>Nº de cuenta: 648418/${session_user.getCustomer().getCustomer_ID()}</h4>
+                        <h4>DNI: ${session_user.getCustomer().getDni()}</h4>
                         <br>
-                        <h4>Saldo: $${session_user.getCuenta().getSaldo()}</h4>
+                        <h4>Saldo: $ ${session_user.getCustomer().getAccounts().get(0).getBalance()}</h4>
                         <h3>Ultimos movimientos</h3>
                         <table class="table table-hover" border="0">
                             <tr>
                                 <th>Fecha</th>
                                 <th>Movimiento</th>
                             </tr>
-                            <c:forEach items="${session_user.getCuenta().getMovimietos()}" var="p">
+                            <c:forEach items="${session_user.getCustomer().getAccounts().get(0).getMovs()}" var="p">
                                 <tr>
-                                    <td>${p.fecha}</td>
-                                    <td>${p.accion}</td>
+                                    <td>${p.date}</td>
+                                    <td>${p.action}</td>
                                 </tr>
                             </c:forEach>
                         </table>

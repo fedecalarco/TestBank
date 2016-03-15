@@ -5,6 +5,7 @@
  */
 package com.banco.service;
 
+import com.banco.model.Customer;
 import com.banco.model.User;
 import java.util.List;
 

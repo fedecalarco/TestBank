@@ -5,7 +5,7 @@
  */
 package com.banco.daos;
 
-import com.banco.model.Cuenta;
+import com.banco.model.Account;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +26,14 @@ public class BankDAOImpl implements BankDAO {
     }
 
     @Override
-    public Cuenta getCuentaById(long nroCuenta) {
-        return (Cuenta) getCurrentSession().createQuery("FROM com.banco.model.Cuenta WHERE cuentaId='" + nroCuenta + "'").uniqueResult();
+    public Account getAccountById(long account_ID) {
+        return (Account) getCurrentSession().createQuery("FROM com.banco.model.Account WHERE accout_ID='" + account_ID + "'").uniqueResult();
 
     }
 
     @Override
-    public void update(Cuenta cuenta) {
-        getCurrentSession().update(cuenta);
+    public void update(Account account) {
+        getCurrentSession().update(account);
     }
 
 }

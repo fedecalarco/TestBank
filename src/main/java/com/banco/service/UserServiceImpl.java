@@ -9,7 +9,8 @@ import com.banco.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.banco.daos.UserDAO;
-import com.banco.model.Cuenta;
+import com.banco.model.Account;
+import com.banco.model.Customer;
 import com.banco.model.User_Role;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,20 +25,27 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDAO userDao;
-
-    // @Autowired
-    private MovimientosService mov = new MovimientosServiceImpl();
+    
+    private void newAccount(){
+        
+    }
 
     @Override
     public void create(User user) {
 
-        Cuenta cuenta = new Cuenta();
-        cuenta.setSaldo(0);
-        cuenta.agregarMovimiento(mov.setMovimiento("Registro",0,0));
-        user.setCuenta(cuenta);
+        Account acc = new Account();
+        acc.setBalance(2000);
+        
+
+        Customer customer = user.getCustomer();
+        customer.setUser(user);
+        customer.addAccount(acc);
+        
+        acc.setCustomer(customer);
+
+        user.setCustomer(user.getCustomer());
 
         user.setRole(User_Role.ROLE_USER);
-
         userDao.create(user);
     }
 

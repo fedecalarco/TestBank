@@ -42,7 +42,7 @@
                         <h1>Transferencias</h1>
                         <h3 style="color: green">${ok}</h3>
                         <f:form action="transferencias">
-                            <input type="hidden" name="nroCuentaOrigen" id="a" value="${session_user.getCuenta().getId()}"/><br>
+                            <input type="hidden" name="nroCuentaOrigen" id="a" value="${session_user.getCustomer().getAccount().getAccount_ID()}"/><br>
 
                             <label for="userB">Nº cuenta destino: </label> <br>
                             <input type="text" name="nroCuentaDestino" id="b" value="" class="input" required/><br>
